@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Прогноз погоды</title>
+<style>
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    scroll-behavior: smooth;
+    color: #000;
+}
+
+body {
+    background: url('background.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Верхний текст слева и картинка заголовка по центру */
+.header {
+    position: relative;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.header-left {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 18px;
+}
+
+.header-center img {
+    width: 460px;
+    height: 120px;
+    object-fit: cover;
+    display: inline-block;
+}
+
+/* Верхняя секция с таблицей */
+.section-top {
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.1);
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    width: 100%;
+    max-width: 1200px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    font-size: 16px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    margin: 0 auto; /* Центрируем таблицу */
+}
+
+thead {
+    background-color: rgba(255,255,255,0.9);
+}
+
+tbody {
+    background-color: rgba(255,255,255,0.7);
+}
+
+th, td {
+    padding: 10px 8px;
+    text-align: center;
+}
+
+th {
+    font-weight: bold;
+}
+
+tbody td {
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+th:first-child {
+    border-top-left-radius: 12px;
+}
+
+th:last-child {
+    border-top-right-radius: 12px;
+}
+
+td:first-child {
+    border-radius: 6px 0 0 6px;
+}
+
+td:last-child {
+    border-radius: 0 6px 6px 0;
+}
+
+.hidden-rows {
+    display: none;
+}
+
+.show-btn {
+    margin-top: 15px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4a90e2;
+    color: white;
+    cursor: pointer;
+}
+
+.show-btn:hover {
+    background-color: #357ABD;
+}
+
+/* Нижняя секция */
+.section-bottom {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    background-color: rgba(255,255,255,0.1);
+}
+
+.slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+}
+
+.slide-text {
+    flex: 1;
+    padding-right: 20px;
+    font-size: 18px;
+}
+
+.slide-image {
+    width: 480px;
+    height: 480px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+/* Адаптивность для телефонов */
+@media (max-width: 768px) {
+    .slide {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .slide-text {
+        padding-right: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .slide-image {
+        width: 80%;
+        height: auto;
+    }
+
+    table {
+        font-size: 14px;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="header-left">Старостин Максим 11 А</div>
+    <div class="header-center">
+        <img src="header-image.jpg" alt="Заголовок">
+    </div>
+</div>
+
+<div class="section-top">
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Время</th>
+                    <th>Пт 19.12</th>
+                    <th>Сб 20.12</th>
+                    <th>Вс 21.12</th>
+                    <th>Пн 22.12</th>
+                    <th>Вт 23.12</th>
+                    <th>Ср 24.12</th>
+                    <th>Чт 25.12</th>
+                    <th>Пт 26.12</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Видимые строки до 14:00 Андрей Лох -->
+                <tr><td>06:00</td><td>−10° −12° снежно</td><td>−20° −25° снежно</td><td>−25° −28° ясно</td><td>−12° −14° облачно</td><td>−8° −10° облачно</td><td>−6° −8° снег</td><td>−18° −20° облачно</td><td>−14° −16° снег</td></tr>
+                <tr><td>07:00</td><td>−9° −11° снег</td><td>−19° −24° снег</td><td>−24° −27° ясно</td><td>−11° −13° облачно</td><td>−7° −9° облачно</td><td>−5° −7° снег</td><td>−17° −19° облачно</td><td>−13° −15° снег</td></tr>
+                <tr><td>08:00</td><td>−8° −10° снег</td><td>−18° −23° снег</td><td>−23° −26° ясно</td><td>−10° −12° облачно</td><td>−6° −8° облачно</td><td>−4° −6° снег</td><td>−16° −18° облачно</td><td>−12° −14° снег</td></tr>
+                <tr><td>09:00</td><td>−7° −9° снег</td><td>−17° −22° снег</td><td>−22° −25° ясно</td><td>−9° −11° облачно</td><td>−5° −7° облачно</td><td>−3° −5° снег</td><td>−15° −17° облачно</td><td>−11° −13° снег</td></tr>
+                <tr><td>10:00</td><td>−6° −8° снег</td><td>−16° −21° снег</td><td>−21° −24° ясно</td><td>−8° −10° облачно</td><td>−4° −6° облачно</td><td>−2° −4° снег</td><td>−14° −16° облачно</td><td>−10° −12° снег</td></tr>
+                <tr><td>11:00</td><td>−6° −7° снег</td><td>−16° −20° снег</td><td>−21° −23° ясно</td><td>−7° −9° облачно</td><td>−4° −5° облачно</td><td>−2° −3° снег</td><td>−14° −15° облачно</td><td>−10° −11° снег</td></tr>
+                <tr><td>12:00</td><td>−5° −6° снег</td><td>−15° −19° снег</td><td>−20° −22° ясно</td><td>−6° −8° облачно</td><td>−3° −4° облачно</td><td>−1° −2° снег</td><td>−13° −14° облачно</td><td>−9° −11° снег</td></tr>
+                <tr><td>13:00</td><td>−5° −6° снег</td><td>−14° −18° снег</td><td>−19° −21° ясно</td><td>−5° −7° облачно</td><td>−2° −3° облачно</td><td>−1° −2° снег</td><td>−12° −13° облачно</td><td>−8° −10° снег</td></tr>
+                <tr><td>14:00</td><td>−5° −6° снег</td><td>−14° −18° снег</td><td>−19° −20° ясно</td><td>−5° −7° облачно</td><td>−2° −3° облачно</td><td>−1° −2° снег</td><td>−12° −13° облачно</td><td>−8° −10° снег</td></tr>
+
+                <!-- Скрытые строки после 14:00 Код писал только я -->
+                <tr class="hidden-rows"><td>15:00</td><td>−6° −7° снег</td><td>−15° −19° снег</td><td>−20° −22° ясно</td><td>−6° −8° облачно</td><td>−3° −4° облачно</td><td>−2° −3° снег</td><td>−13° −14° облачно</td><td>−9° −11° снег</td></tr>
+                <tr class="hidden-rows"><td>16:00</td><td>−7° −8° снег</td><td>−16° −20° снег</td><td>−21° −23° ясно</td><td>−7° −9° облачно</td><td>−4° −5° облачно</td><td>−3° −4° снег</td><td>−14° −15° облачно</td><td>−10° −12° снег</td></tr>
+                <tr class="hidden-rows"><td>17:00</td><td>−8° −9° снег</td><td>−17° −21° снег</td><td>−22° −24° ясно</td><td>−8° −10° облачно</td><td>−5° −6° облачно</td><td>−4° −5° снег</td><td>−15° −16° облачно</td><td>−11° −13° снег</td></tr>
+                <tr class="hidden-rows"><td>18:00</td><td>−9° −10° снег</td><td>−18° −22° снег</td><td>−23° −25° ясно</td><td>−9° −11° облачно</td><td>−6° −7° облачно</td><td>−5° −6° снег</td><td>−16° −17° облачно</td><td>−12° −14° снег</td></tr>
+                <tr class="hidden-rows"><td>19:00</td><td>−10° −11° снег</td><td>−19° −23° снег</td><td>−24° −26° ясно</td><td>−10° −12° облачно</td><td>−7° −8° облачно</td><td>−6° −7° снег</td><td>−17° −18° облачно</td><td>−13° −15° снег</td></tr>
+                <tr class="hidden-rows"><td>20:00</td><td>−10° −12° снег</td><td>−20° −24° снег</td><td>−25° −28° ясно</td><td>−11° −13° облачно</td><td>−8° −9° облачно</td><td>−7° −8° снег</td><td>−18° −19° облачно</td><td>−14° −16° снег</td></tr>
+                <tr class="hidden-rows"><td>21:00</td><td>−11° −13° снег</td><td>−21° −25° снег</td><td>−26° −29° ясно</td><td>−12° −14° облачно</td><td>−9° −10° облачно</td><td>−8° −9° снег</td><td>−19° −20° облачно</td><td>−15° −17° снег</td></tr>
+                <tr class="hidden-rows"><td>22:00</td><td>−12° −14° снег</td><td>−22° −26° снег</td><td>−27° −30° ясно</td><td>−13° −15° облачно</td><td>−10° −11° облачно</td><td>−9° −10° снег</td><td>−20° −21° облачно</td><td>−16° −18° снег</td></tr>
+            </tbody>
+        </table>
+        <button class="show-btn" onclick="showFullTable()">Полный просмотр</button>
+    </div>
+</div>
+
+<div class="section-bottom">
+    <div class="slide">
+        <div class="slide-text">
+Данные, представленные на сайте, сформированы на основе анализа климатических данных и существующих прогнозов погоды. Используя методы обработки информации и технологии искусственного интеллекта, я подготовил таблицу с предполагаемыми значениями температуры на предстоящую неделю.
+
+Алгоритм ИИ основывается на прогнозах, предоставляемых известными сервисами погоды, которые актуальны на ближайшие 1–2 дня, а также на открытых источниках данных и Weather API. На основе этих данных производится интерполяция и оценка вероятных значений для последующих дней недели. Такой подход позволяет демонстрировать потенциальные климатические условия, не претендуя на абсолютную точность, но предоставляя наглядную иллюстрацию возможных тенденций температуры.
+        </div>
+        <img class="slide-image" src="slide-image.png" alt="Слайд Картинка">
+    </div>
+</div>
+
+<script>
+function showFullTable() {
+    const rows = document.querySelectorAll('.hidden-rows');
+    rows.forEach(row => row.style.display = 'table-row');
+    document.querySelector('.show-btn').style.display = 'none';
+}
+</script>
+
+</body>
+</html>
